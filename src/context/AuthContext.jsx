@@ -16,24 +16,25 @@ function AuthContextProvider({children}) {
    //     // key/keyvalue
    // }
 
-    const [isAuth, setIsAuth]= useState (false);
+    const [isAuth, setIsAuth]= useState ({ isAuth:false, user:''});
     const navigate = useNavigate();
 
-    function login(){
+    function login(email){
         console.log(`logged in`);
-        setIsAuth(true);
+        setIsAuth({ isAuth:false, user:email});
         navigate('/profile');
     }
 
     function logout() {
         console.log(`logged out`);
-        setIsAuth(false);
+        setIsAuth({ isAuth:false, user:''});
         navigate(`/`);
     }
 
 
     const contextData = {
         isAuth: isAuth,
+        user: isAuth.user,
         login: login,
         logout: logout,
     };

@@ -9,7 +9,7 @@ function SignIn() {
 
     function handleSubmit (e) {
         e.preventDefault();
-        login();
+        login(email);
     }
 
   return (
