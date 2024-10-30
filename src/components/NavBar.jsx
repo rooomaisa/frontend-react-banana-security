@@ -22,7 +22,7 @@ function NavBar() {
 
         {isAuth ? (
             <div>
-            <span>Welcome, {user}!</span>
+            {/*<span> Welcome, {user} ! </span>*/}
             <button
                 type="button"
                 onClick={logout}

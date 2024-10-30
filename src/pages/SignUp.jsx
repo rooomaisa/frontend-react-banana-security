@@ -1,14 +1,42 @@
 import React, {useContext, useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {AuthContext} from "../context/AuthContext";
+import axios from "axios";
+import SignIn from "./SignIn";
 
 function SignUp() {
         const [email, setEmail] = useState('');
         const [username, setUsername] = useState('');
         const [password, setPassword] = useState('');
 
-        function handleSubmit (e) {
-            e.preventDefault();
+        const [loading, setLoading] = useState(false)
+        const [error, setError] = useState('')
+        const navigate= useNavigate();
+
+
+       async function handleSubmit (e) {
+           e.preventDefault();
+           console.log(email, username, password);
+
+           setLoading(true);
+           setError('');
+
+           try {
+               await axios.post('http://localhost:3000/register', {
+                   email: email,
+                   password: password,
+                   username: username,
+               });
+
+               navigate ('/signin');
+
+           } catch (e) {
+               console.error(e);
+               setError(`Something went wrong: ` + e.message);
+           }
+        finally {
+               setLoading(false);
+           }
         }
 
     return (
@@ -51,6 +79,12 @@ function SignUp() {
                     onChange={(e) => setPassword(e.target.value)}
                 />
             </label>
+            <button
+                type="submit"
+                className="form-button"
+            >
+                Sign-up
+            </button>
 
 
         </form>
