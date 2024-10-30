@@ -1,10 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import {useContext} from "react";
+import authContext, {AuthContext} from "../context/AuthContext";
 
 function Home() {
+  // const {banaan} = useContext (AuthContext)
+  // console.log({banaan})
+  // je krijgt hier dus heel dat object binnen van data, als je een specifieke key wilt aanspreken ga je dat hier al destructuren en dan vraag ja al om die banaan key. zo kan je hem wel gelijk gebruiken op je pagina. ipv data.banaan als een key aansprken. dus jhe hebt toegang tot het hele data comp maar je an dus gelijk destruct welke key je wilt
+
+
+
   return (
     <>
       <h1>Homepagina</h1>
+
       <section>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem id libero provident! Accusantium at autem
           cumque, esse eum, fugiat ipsa ipsam quia quis ratione repudiandae sapiente sequi sit tempora voluptates.
